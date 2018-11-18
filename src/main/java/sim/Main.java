@@ -19,7 +19,9 @@ public class Main {
         for( int i = 0; i<Constants.numberOfFile; i++ ) fileId.add( i );
 
         Map<Integer, Integer > initialFreq = SimulationEngine.initializeInitialDownloadFrequency( fileId );
+        Map<Integer, Integer > freqAfterDownloadedByGoodUser = SimulationEngine.simulateGoodUserDownload( initialFreq );
 
         System.out.println( initialFreq );
+        System.out.println( freqAfterDownloadedByGoodUser );
     }
 }

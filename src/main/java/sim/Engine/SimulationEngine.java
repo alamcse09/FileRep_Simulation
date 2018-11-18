@@ -1,6 +1,7 @@
 package sim.Engine;
 
 import sim.Constants;
+import sim.RandomNumberGenerator.WeightedRandomGenerator;
 import sim.util.Util;
 
 import java.util.HashMap;
@@ -34,5 +35,24 @@ public class SimulationEngine {
 
             freq.put( fileId.get(i), Util.getRandomNumberInRange( 20, 50 ) );
         }
+    }
+
+    public static Map<Integer,Integer> simulateGoodUserDownload(Map<Integer, Integer> initialFreq) {
+
+        WeightedRandomGenerator<Integer> weightedRandomGenerator = new WeightedRandomGenerator<Integer>( initialFreq );
+        weightedRandomGenerator.initialize();
+
+        Map<Integer,Integer> freq = new HashMap<>( initialFreq );
+
+        for( int i = 0;  i < Constants.numberOfUser*Constants.fractionOfGoodUser; i++ ){
+
+            for( int j = 0; j<Constants.downloadPerUser; j++ ){
+
+                Integer fileId = weightedRandomGenerator.getRandomElement();
+                freq.put( fileId, freq.getOrDefault( fileId, 0 ) + 1 );
+            }
+        }
+
+        return  freq;
     }
 }
