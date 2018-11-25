@@ -142,9 +142,15 @@ public class SampleValueHistogram extends ApplicationFrame {
 
         for( Integer key : initialFreq.keySet() ) {
 
+            int sum = 0;
+            if( freqAfterDownloadedByGoodUser != null )
+                sum += freqAfterDownloadedByGoodUser.get(key);
+            if( freqAfterDownloadedByBadUser != null )
+                freqAfterDownloadedByBadUser.get( key );
+
             dataset.addValue( initialFreq.get(key), "Initial Downloads", String.valueOf( key ) );
-            dataset.addValue( freqAfterDownloadedByGoodUser.get(key) + freqAfterDownloadedByBadUser.get(key), "After Downloaded by good and bad User", String.valueOf( key ) );
-            //dataset.addValue( freqAfterDownloadedByBadUser.get(key), "After Downloaded by Bad User", String.valueOf( key ) );
+            dataset.addValue( freqAfterDownloadedByGoodUser.get(key), "After Downloaded by good User", String.valueOf( key ) );
+            dataset.addValue( freqAfterDownloadedByBadUser.get(key), "After Downloaded by Bad User", String.valueOf( key ) );
         }
 
         return dataset;

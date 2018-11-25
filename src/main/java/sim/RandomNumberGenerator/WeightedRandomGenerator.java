@@ -1,5 +1,7 @@
 package sim.RandomNumberGenerator;
 
+import sim.Config;
+
 import java.util.*;
 
 public class WeightedRandomGenerator <T>
@@ -35,7 +37,7 @@ public class WeightedRandomGenerator <T>
      */
     public void initialize()
     {
-        random = new Random();
+        random = Config.getRandom();
 
         if( itemWeightMap != null )
             initializeMap();

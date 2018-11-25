@@ -1,5 +1,7 @@
 package sim.util;
 
+import sim.Config;
+
 import java.util.*;
 
 import static java.util.Collections.reverseOrder;
@@ -25,7 +27,7 @@ public class Util {
             throw new IllegalArgumentException("max must be greater than min");
         }
 
-        Random r = new Random();
+        Random r = Config.getRandom();
         return r.nextInt((max - min) + 1) + min;
     }
 }

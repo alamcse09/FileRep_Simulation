@@ -4,10 +4,7 @@ import sim.Constants;
 import sim.RandomNumberGenerator.WeightedRandomGenerator;
 import sim.util.Util;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 public class SimulationEngine {
 
@@ -45,19 +42,17 @@ public class SimulationEngine {
         }
     }
 
-    public static Map<Integer,Integer> simulateGoodUserDownload(Map<Integer, Integer> initialFreq) {
+    public static Map<Integer,Integer> simulateGoodUserDownload(Map<Integer, Integer> initialFreq, Set<Integer> goodFileIds) {
 
-        WeightedRandomGenerator<Integer> weightedRandomGenerator = new WeightedRandomGenerator<Integer>( initialFreq );
-        weightedRandomGenerator.initialize();
-
+        List<Integer> fileIds = new ArrayList<>( goodFileIds );
         Map<Integer,Integer> freq = new HashMap<>( initialFreq );
 
         for( int i = 0;  i < Constants.numberOfUser*Constants.fractionOfGoodUser; i++ ){
 
-            for( int j = 0; j<Constants.downloadPerUser; j++ ){
+            Collections.shuffle( fileIds );
+            for( int j = 0, index=0; j<Constants.downloadPerUser && index<fileIds.size(); j++, index++ ){
 
-                Integer fileId = weightedRandomGenerator.getRandomElement();
-                freq.put( fileId, freq.getOrDefault( fileId, 0 ) + 1 );
+                freq.put( fileIds.get(index) , freq.getOrDefault( fileIds.get(index), 0 ) + 1 );
             }
         }
 
@@ -85,5 +80,20 @@ public class SimulationEngine {
         }
 
         return  freq;
+    }
+
+    public static Set<Integer> getGoodFileIds(List<Integer> fileId) {
+
+        Set<Integer> goodFiles = new HashSet<>();
+
+        while( goodFiles.size() < Constants.numberOfFile * Constants.fractionOfGoodFile ){
+
+            int randomId = Util.getRandomNumberInRange( 0, fileId.size() );
+
+            if( !goodFiles.contains( randomId ) )
+                goodFiles.add( randomId );
+        }
+
+        return goodFiles;
     }
 }
