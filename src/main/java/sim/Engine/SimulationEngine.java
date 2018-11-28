@@ -117,6 +117,10 @@ public class SimulationEngine {
 
                     if( fileId.contains(chosenRank) ) {
                         Pair<Integer, Integer> fileIdFreqPair = fileIdFreqPairList.get(chosenRank);
+
+                        if( selectedFiles.contains( fileIdFreqPair.getFirst() ) )
+                            continue;
+
                         freqAfterDownloadedByBadUser.put(fileIdFreqPair.getFirst(), freqAfterDownloadedByBadUser.getOrDefault(fileIdFreqPair.getFirst(), 0) + 1);
                         break;
                     }
