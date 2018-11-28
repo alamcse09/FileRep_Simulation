@@ -19,15 +19,15 @@ public class Main {
         for( int i = 0; i<Constants.numberOfFile; i++ ) fileId.add( i );
 
         Map<Integer, Integer > initialFreq = SimulationEngine.initializeInitialDownloadFrequency( fileId );
-        Set<Integer> goodFileIds = SimulationEngine.getGoodFileIds( fileId );
+        ArrayList<Integer> goodFileIds = SimulationEngine.getGoodFileIds( fileId );
         Map<Integer, Integer > freqAfterDownloadedByGoodUser = SimulationEngine.simulateGoodUserDownload( initialFreq, goodFileIds );
-        Map<Integer, Integer > freqAfterDownloadedByBadUser = SimulationEngine.simulateBadUserDownload( fileId, initialFreq );
+        Map<Integer, Integer > freqAfterDownloadedByBadUser = SimulationEngine.simulateDownloadByBadUser( fileId, initialFreq );
         //Map<Integer, Integer > freqAfterDownloadedByBadUser = null;
 
         System.out.println( initialFreq );
         System.out.println( freqAfterDownloadedByGoodUser );
 
-        SampleValueHistogram chart = new SampleValueHistogram( "Download frequency", null, initialFreq, freqAfterDownloadedByGoodUser, freqAfterDownloadedByBadUser );
+        SampleValueHistogram chart = new SampleValueHistogram( "Download frequency", null, initialFreq, freqAfterDownloadedByGoodUser, freqAfterDownloadedByBadUser, goodFileIds );
         chart.pack();
         RefineryUtilities.centerFrameOnScreen(chart);
         chart.setVisible(true);

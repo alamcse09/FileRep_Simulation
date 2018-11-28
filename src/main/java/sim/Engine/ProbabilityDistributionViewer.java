@@ -4,30 +4,14 @@ package sim.Engine;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.BorderLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
 
 import org.jfree.ui.RefineryUtilities;
 
-import javax.swing.SwingConstants;
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.AbstractAction;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ProbabilityDistributionViewer {
 
@@ -124,43 +108,6 @@ public class ProbabilityDistributionViewer {
         frame.getContentPane().add(numOfFile);
 
         JButton draw = new JButton("Draw");
-        draw.addActionListener( (e) -> {
-            try {
-
-                //Distribution distribution = (Distribution) distro.getSelectedItem();
-
-                Double p1 = Double.parseDouble( param1.getText() );
-                Double p2 = Double.parseDouble( param2.getText() );
-
-                Integer numFile = Integer.parseInt( numOfFile.getText() );
-                Integer numSample = Integer.parseInt( numOfSamples.getText() );
-
-                if( numFile < 0 )
-                    throw new Exception( "Number of file can't be less then 0" );
-                else if( numSample < 0 )
-                    throw new Exception( "Number of sample can't be less then 0" );
-                else if( p1 < 0 )
-                    throw new Exception( "Parameter 1 can't be less then 0" );
-                else if( p2 < 0 )
-                    throw new Exception( "Parameter 2 can't be less then 0" );
-
-
-                SampleValueHistogram chart = new SampleValueHistogram( "Download frequency" );
-                chart.pack();
-                RefineryUtilities.centerFrameOnScreen(chart);
-                chart.setVisible(true);
-                frame.setVisible( false );
-
-            }
-            catch( NumberFormatException ex ) {
-
-                JOptionPane.showMessageDialog(frame, "Please enter valid number in textbox", "Number format error", JOptionPane.ERROR_MESSAGE, null );
-            }
-            catch( Exception ex ) {
-
-                JOptionPane.showMessageDialog(frame, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE, null );
-            }
-        });
 
         draw.setBounds(205, 173, 91, 23);
         frame.getContentPane().add(draw);

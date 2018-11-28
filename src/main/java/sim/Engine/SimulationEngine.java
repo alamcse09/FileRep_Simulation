@@ -1,5 +1,7 @@
 package sim.Engine;
 
+import org.apache.commons.math3.distribution.ParetoDistribution;
+import org.apache.commons.math3.util.Pair;
 import sim.Constants;
 import sim.RandomNumberGenerator.WeightedRandomGenerator;
 import sim.util.Util;
@@ -42,7 +44,7 @@ public class SimulationEngine {
         }
     }
 
-    public static Map<Integer,Integer> simulateGoodUserDownload(Map<Integer, Integer> initialFreq, Set<Integer> goodFileIds) {
+    public static Map<Integer,Integer> simulateGoodUserDownload(Map<Integer, Integer> initialFreq, ArrayList<Integer> goodFileIds) {
 
         List<Integer> fileIds = new ArrayList<>( goodFileIds );
         Map<Integer,Integer> freq = new HashMap<>( initialFreq );
@@ -82,7 +84,44 @@ public class SimulationEngine {
         return  freq;
     }
 
-    public static Set<Integer> getGoodFileIds(List<Integer> fileId) {
+    public static Map<Integer,Integer> simulateDownloadByBadUser( List<Integer> fileId, Map<Integer,Integer> initialFreq ){
+
+        Map<Integer,Integer> freqAfterDownloadedByBadUser = new HashMap<>( initialFreq );
+
+        List<Pair<Integer,Integer>> fileIdFreqPairList = new ArrayList<>();
+
+        for( Integer id: fileId ){
+
+            fileIdFreqPairList.add( new Pair( id, initialFreq.get( id ) ) );
+        }
+
+        Collections.sort(fileIdFreqPairList, new Comparator<Pair<Integer, Integer>>() {
+            @Override
+            public int compare(Pair<Integer, Integer> o1, Pair<Integer, Integer> o2) {
+                return -o1.getSecond().compareTo( o2.getSecond() );
+            }
+        });
+
+        ParetoDistribution pd = new ParetoDistribution( 1, 1.16 );
+
+        for( int i = (int)( Constants.numberOfUser*Constants.fractionOfGoodUser ); i < Constants.numberOfUser; i++ ){
+
+            while( true ) {
+                Double sample = pd.sample();
+                Integer chosenRank = sample.intValue() % Constants.numberOfFile;
+
+                if (fileId.contains(chosenRank)) {
+                    Pair<Integer, Integer> fileIdFreqPair = fileIdFreqPairList.get(chosenRank);
+                    freqAfterDownloadedByBadUser.put(fileIdFreqPair.getFirst(), freqAfterDownloadedByBadUser.getOrDefault(fileIdFreqPair.getFirst(), 0 ) + 1);
+                    break;
+                }
+            }
+        }
+
+        return freqAfterDownloadedByBadUser;
+    }
+
+    public static ArrayList<Integer> getGoodFileIds(List<Integer> fileId) {
 
         Set<Integer> goodFiles = new HashSet<>();
 
@@ -94,6 +133,6 @@ public class SimulationEngine {
                 goodFiles.add( randomId );
         }
 
-        return goodFiles;
+        return new ArrayList<Integer>(goodFiles);
     }
 }
