@@ -2,22 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="98addb39-dc2a-4bd3-b44b-84743526dcd6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/lib/miglayout-core-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/lib/miglayout-core-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/lib/miglayout-core.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/lib/miglayout-swing-javadoc.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/lib/miglayout-swing-sources.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/lib/miglayout-swing.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/.idea/libraries/MigLayout.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../FileRep_Simulation/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/ProbabilityDistributionViewer$1.class" afterPath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/ProbabilityDistributionViewer$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/ProbabilityDistributionViewer.class" afterPath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/ProbabilityDistributionViewer.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/SampleValueHistogram.class" afterPath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/SampleValueHistogram.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/SimulationEngine$1.class" afterPath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/SimulationEngine$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/SimulationEngine.class" afterPath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Engine/SimulationEngine.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Main.class" afterPath="$PROJECT_DIR$/../FileRep_Simulation/target/classes/sim/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../FileRep_Simulation/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/FileRep_Simulation.iml" afterPath="$PROJECT_DIR$/../FileRep_Simulation/FileRep_Simulation.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/ProbabilityDistributionViewer.java" afterPath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/ProbabilityDistributionViewer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Constants.java" afterPath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Constants.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SampleValueHistogram.java" afterPath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SampleValueHistogram.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SimulationEngine.java" afterPath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SimulationEngine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Main.java" afterPath="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Main.java" />
@@ -45,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
+            <state relative-caret-position="119">
+              <caret line="7" column="51" lean-forward="false" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -58,8 +48,8 @@
       <file leaf-file-name="SampleValueHistogram.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SampleValueHistogram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="38" />
+            <state relative-caret-position="59">
+              <caret line="85" column="45" lean-forward="false" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -67,12 +57,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Config.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Config.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="34" lean-forward="false" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-              <folding />
+            <state relative-caret-position="252">
+              <caret line="22" column="91" lean-forward="true" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -80,20 +72,8 @@
       <file leaf-file-name="SimulationEngine.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SimulationEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="218">
-              <caret line="20" column="82" lean-forward="true" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+            <state relative-caret-position="460">
+              <caret line="117" column="22" lean-forward="false" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -140,11 +120,11 @@
         <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/util/Util.java" />
         <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/RandomNumberGenerator/WeightedRandomGenerator.java" />
         <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Config.java" />
-        <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Main.java" />
         <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/ProbabilityDistributionViewer.java" />
         <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SampleValueHistogram.java" />
-        <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Constants.java" />
+        <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Main.java" />
         <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SimulationEngine.java" />
+        <option value="$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Constants.java" />
       </list>
     </option>
   </component>
@@ -477,7 +457,7 @@
       <workItem from="1542913291309" duration="141000" />
       <workItem from="1543152072957" duration="3951000" />
       <workItem from="1543156112539" duration="2151000" />
-      <workItem from="1543421517683" duration="6544000" />
+      <workItem from="1543421517683" duration="7213000" />
     </task>
     <task id="LOCAL-00001" summary="good user file download done">
       <created>1542550321911</created>
@@ -490,7 +470,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28531000" />
+    <option name="totallyTimeSpent" value="29200000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -540,7 +520,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SimulationEngine.java</url>
-          <line>112</line>
+          <line>117</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
@@ -904,18 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Constants.java">
+    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/RandomNumberGenerator/FileWeightManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="50" lean-forward="false" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SampleValueHistogram.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="85" column="38" lean-forward="false" selection-start-line="85" selection-start-column="27" selection-end-line="85" selection-end-column="38" />
+        <state relative-caret-position="260">
+          <caret line="21" column="86" lean-forward="false" selection-start-line="21" selection-start-column="86" selection-end-line="21" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -930,20 +902,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/RandomNumberGenerator/FileWeightManager.java">
+    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SampleValueHistogram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="21" column="86" lean-forward="false" selection-start-line="21" selection-start-column="86" selection-end-line="21" selection-end-column="86" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SimulationEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="30" column="24" lean-forward="false" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+        <state relative-caret-position="59">
+          <caret line="85" column="45" lean-forward="false" selection-start-line="85" selection-start-column="45" selection-end-line="85" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -952,11 +914,29 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="20" column="82" lean-forward="true" selection-start-line="20" selection-start-column="82" selection-end-line="20" selection-end-column="82" />
+        <state relative-caret-position="252">
+          <caret line="22" column="91" lean-forward="true" selection-start-line="22" selection-start-column="91" selection-end-line="22" selection-end-column="91" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Engine/SimulationEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="117" column="22" lean-forward="false" selection-start-line="117" selection-start-column="22" selection-end-line="117" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../FileRep_Simulation/src/main/java/sim/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="51" lean-forward="false" selection-start-line="7" selection-start-column="51" selection-end-line="7" selection-end-column="51" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -18,11 +18,10 @@ public class Main {
         List<Integer> fileId = new ArrayList<>();
         for( int i = 0; i<Constants.numberOfFile; i++ ) fileId.add( i );
 
-        Map<Integer, Integer > initialFreq = SimulationEngine.initializeInitialDownloadFrequency( fileId );
         ArrayList<Integer> goodFileIds = SimulationEngine.getGoodFileIds( fileId );
+        Map<Integer, Integer > initialFreq = SimulationEngine.initializeInitialDownloadFrequency( fileId, SimulationEngine.getGoodFileIds( fileId ) );
         Map<Integer, Integer > freqAfterDownloadedByGoodUser = SimulationEngine.simulateGoodUserDownload( initialFreq, goodFileIds );
         Map<Integer, Integer > freqAfterDownloadedByBadUser = SimulationEngine.simulateDownloadByBadUser( fileId, initialFreq );
-        //Map<Integer, Integer > freqAfterDownloadedByBadUser = null;
 
         System.out.println( initialFreq );
         System.out.println( freqAfterDownloadedByGoodUser );

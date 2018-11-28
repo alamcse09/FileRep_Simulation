@@ -83,7 +83,7 @@ public class SampleValueHistogram extends ApplicationFrame {
 
         JPanel panel = new JPanel();
         JTextField textField = new JTextField();
-        textField.setText( goodFileIds.toString() );
+        textField.setText( "Good File Id's" + goodFileIds.toString() );
 
         panel.add( textField );
         chartPanel.add( panel );

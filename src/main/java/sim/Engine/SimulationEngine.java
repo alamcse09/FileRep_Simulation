@@ -10,29 +10,30 @@ import java.util.*;
 
 public class SimulationEngine {
 
-    public static Map<Integer,Integer> initializeInitialDownloadFrequency( List<Integer> fileId ){
+    public static Map<Integer,Integer> initializeInitialDownloadFrequency(List<Integer> fileId, ArrayList<Integer> goodFileIds){
 
         Map<Integer,Integer> freq = new HashMap<>();
 
-        initializeInitialDownloadFrequencyForGoodFile( fileId, freq );
-        initializeInitialDownloadFrequencyForRegularFIle( fileId,freq );
+        initializeInitialDownloadFrequencyForGoodFile( fileId, freq, goodFileIds );
+        initializeInitialDownloadFrequencyForRegularFIle( fileId,freq, goodFileIds );
 
         return freq;
     }
 
-    private static void initializeInitialDownloadFrequencyForRegularFIle(List<Integer> fileId, Map<Integer, Integer> freq) {
+    private static void initializeInitialDownloadFrequencyForRegularFIle(List<Integer> fileId, Map<Integer, Integer> freq, ArrayList<Integer> goodFileIds) {
 
-        for( int i = (int)(fileId.size()* Constants.fractionOfGoodFile); i< fileId.size(); i++ ){
+        for( int i = 0; i< fileId.size(); i++ ){
 
-            freq.put( fileId.get(i), Util.getRandomNumberInRange( Constants.weightOfBadFileMin, Constants.weightOfBadFileMax ) );
+            if( !goodFileIds.contains( i ) )
+                freq.put( fileId.get(i), Util.getRandomNumberInRange( Constants.weightOfBadFileMin, Constants.weightOfBadFileMax ) );
         }
     }
 
-    private static void initializeInitialDownloadFrequencyForGoodFile(List<Integer> fileId, Map<Integer, Integer> freq) {
+    private static void initializeInitialDownloadFrequencyForGoodFile(List<Integer> fileId, Map<Integer, Integer> freq, ArrayList<Integer> goodFileIds) {
 
-        for( int i = 0 ; i< fileId.size()* Constants.fractionOfGoodFile ; i++ ){
+        for( Integer id: goodFileIds ){
 
-            freq.put( fileId.get(i), Util.getRandomNumberInRange( Constants.weightOfGoodFileMin, Constants.weightOfGoodFileMax ) );
+            freq.put( id, Util.getRandomNumberInRange( Constants.weightOfGoodFileMin, Constants.weightOfGoodFileMax ) );
         }
     }
 
@@ -106,14 +107,19 @@ public class SimulationEngine {
 
         for( int i = (int)( Constants.numberOfUser*Constants.fractionOfGoodUser ); i < Constants.numberOfUser; i++ ){
 
-            while( true ) {
-                Double sample = pd.sample();
-                Integer chosenRank = sample.intValue() % Constants.numberOfFile;
+            Set<Integer> selectedFiles = new HashSet<>();
 
-                if (fileId.contains(chosenRank)) {
-                    Pair<Integer, Integer> fileIdFreqPair = fileIdFreqPairList.get(chosenRank);
-                    freqAfterDownloadedByBadUser.put(fileIdFreqPair.getFirst(), freqAfterDownloadedByBadUser.getOrDefault(fileIdFreqPair.getFirst(), 0 ) + 1);
-                    break;
+            for( int j = 0; j<Constants.downloadPerUser; j++ ) {
+
+                while (true) {
+                    Double sample = pd.sample();
+                    Integer chosenRank = sample.intValue() % Constants.numberOfFile;
+
+                    if( fileId.contains(chosenRank) ) {
+                        Pair<Integer, Integer> fileIdFreqPair = fileIdFreqPairList.get(chosenRank);
+                        freqAfterDownloadedByBadUser.put(fileIdFreqPair.getFirst(), freqAfterDownloadedByBadUser.getOrDefault(fileIdFreqPair.getFirst(), 0) + 1);
+                        break;
+                    }
                 }
             }
         }
