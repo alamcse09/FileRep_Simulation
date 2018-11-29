@@ -47,15 +47,15 @@ public class SimulationEngine {
 
     public static Map<Integer,Integer> simulateGoodUserDownload(Map<Integer, Integer> initialFreq, ArrayList<Integer> goodFileIds) {
 
-        List<Integer> fileIds = new ArrayList<>( goodFileIds );
-        Map<Integer,Integer> freq = new HashMap<>( initialFreq );
+        List<Integer> fileIds = new ArrayList<>();
+        Map<Integer,Integer> freq = new HashMap<>();
 
         for( int i = 0;  i < Constants.numberOfUser*Constants.fractionOfGoodUser; i++ ){
 
-            Collections.shuffle( fileIds );
-            for( int j = 0, index=0; j<Constants.downloadPerUser && index<fileIds.size(); j++, index++ ){
+            Collections.shuffle( goodFileIds );
+            for( int j = 0, index=0; j<Constants.downloadPerUser && index<goodFileIds.size(); j++, index++ ){
 
-                freq.put( fileIds.get(index) , freq.getOrDefault( fileIds.get(index), 0 ) + 1 );
+                freq.put( goodFileIds.get(index) , freq.getOrDefault( goodFileIds.get(index), 0 ) + 1 );
             }
         }
 
@@ -87,7 +87,7 @@ public class SimulationEngine {
 
     public static Map<Integer,Integer> simulateDownloadByBadUser( List<Integer> fileId, Map<Integer,Integer> initialFreq ){
 
-        Map<Integer,Integer> freqAfterDownloadedByBadUser = new HashMap<>( initialFreq );
+        Map<Integer,Integer> freqAfterDownloadedByBadUser = new HashMap<>( );
 
         List<Pair<Integer,Integer>> fileIdFreqPairList = new ArrayList<>();
 

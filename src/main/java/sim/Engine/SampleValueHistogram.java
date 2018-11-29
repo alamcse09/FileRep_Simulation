@@ -53,7 +53,7 @@ public class SampleValueHistogram extends ApplicationFrame {
 
         CategoryDataset dataset = createDataset();
 
-        JFreeChart barChart = ChartFactory.createStackedBarChart3D( "", "File Id", "Num Of Download", dataset, PlotOrientation.VERTICAL, true, true, false);
+        JFreeChart barChart = ChartFactory.createStackedBarChart( "", "File Id", "Num Of Download", dataset, PlotOrientation.VERTICAL, true, true, false);
 
         ChartPanel chartPanel = new ChartPanel(barChart);
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 367));
