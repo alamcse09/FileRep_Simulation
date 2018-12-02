@@ -20,6 +20,16 @@ public class SimulationEngine {
         return freq;
     }
 
+    public static Map<Integer,Double> initializeInitialScore(List<Integer> fileId) {
+
+        Map<Integer,Double> freq = new HashMap<>();
+
+        for( Integer id: fileId )
+            freq.put( id, 0.5 );
+
+        return freq;
+    }
+
     private static void initializeInitialDownloadFrequencyForRegularFIle(List<Integer> fileId, Map<Integer, Integer> freq, ArrayList<Integer> goodFileIds) {
 
         for( int i = 0; i< fileId.size(); i++ ){
@@ -60,6 +70,13 @@ public class SimulationEngine {
         }
 
         return  freq;
+    }
+
+    public static Map<Integer,Double> simulateDownloadByGoodUserByScore(Map<Integer, Double> initialScore, ArrayList<Integer> goodFileIds, List<Integer> goodUserId) {
+
+        Map<Integer, Double> userScoreMap = new HashMap<>();
+
+        
     }
 
     public static Map<Integer,Integer> simulateBadUserDownload( List<Integer> fileId, Map<Integer, Integer> initialFreq) {
@@ -144,5 +161,20 @@ public class SimulationEngine {
         }
 
         return new ArrayList<Integer>(goodFiles);
+    }
+
+    public static List<Integer> getGoodUserId() {
+
+        Set<Integer> goodUserId = new HashSet<>();
+
+        while( goodUserId.size() < Constants.numberOfUser*Constants.fractionOfGoodUser ){
+
+            int randomId = Util.getRandomNumberInRange( 0, Constants.numberOfUser );
+
+            if( !goodUserId.contains( randomId ) )
+                goodUserId.add( randomId );
+        }
+
+        return new ArrayList<>( goodUserId );
     }
 }
