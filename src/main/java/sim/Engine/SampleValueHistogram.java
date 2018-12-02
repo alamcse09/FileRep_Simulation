@@ -3,6 +3,7 @@ package sim.Engine;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.swing.*;
@@ -26,9 +27,9 @@ public class SampleValueHistogram extends ApplicationFrame {
     private double param1 = 1;
     private double param2 = 2;
     private JFrame frame = null;
-    Map<Integer,Integer> initialFreq;
-    Map<Integer,Integer> freqAfterDownloadedByGoodUser;
-    Map<Integer,Integer> freqAfterDownloadedByBadUser;
+    Map<Integer,Double> initialFreq;
+    Map<Integer,Double> freqAfterDownloadedByGoodUser;
+    Map<Integer,Double> freqAfterDownloadedByBadUser;
     ArrayList<Integer> goodFileIds;
 
     public SampleValueHistogram( String applicationTitle ) {
@@ -37,13 +38,39 @@ public class SampleValueHistogram extends ApplicationFrame {
         draw();
     }
 
-    public SampleValueHistogram( String applicationTitle, JFrame frame, Map<Integer,Integer> initialFreq, Map<Integer, Integer> freqAfterDownloadedByGoodUser, Map<Integer, Integer> freqAfterDownloadedByBadUser,ArrayList<Integer> goodFileIds ) {
+    public SampleValueHistogram( String applicationTitle, JFrame frame, Map<Integer,Double> initialFreq, Map<Integer, Double> freqAfterDownloadedByGoodUser, Map<Integer, Double> freqAfterDownloadedByBadUser,ArrayList<Integer> goodFileIds, Boolean doubleVal ) {
 
         super(applicationTitle);
         this.frame = frame;
         this.initialFreq = initialFreq;
         this.freqAfterDownloadedByGoodUser = freqAfterDownloadedByGoodUser;
         this.freqAfterDownloadedByBadUser = freqAfterDownloadedByBadUser;
+        this.goodFileIds = goodFileIds;
+
+        draw();
+    }
+
+    public SampleValueHistogram( String applicationTitle, JFrame frame, Map<Integer,Integer> initialFreq, Map<Integer, Integer> freqAfterDownloadedByGoodUser, Map<Integer, Integer> freqAfterDownloadedByBadUser,ArrayList<Integer> goodFileIds ) {
+
+        super(applicationTitle);
+        this.frame = frame;
+
+        this.initialFreq = new HashMap<Integer, Double>();
+        this.freqAfterDownloadedByGoodUser = new HashMap<Integer, Double>();
+        this.freqAfterDownloadedByBadUser = new HashMap<Integer, Double>();
+
+        for( Integer key: initialFreq.keySet() ){
+
+            this.initialFreq.put( key, initialFreq.get( key ).doubleValue() );
+        }
+        for( Integer key: freqAfterDownloadedByGoodUser.keySet() ){
+
+            this.freqAfterDownloadedByGoodUser.put( key, freqAfterDownloadedByGoodUser.get( key ).doubleValue() );
+        }
+        for( Integer key: freqAfterDownloadedByBadUser.keySet() ){
+
+            this.freqAfterDownloadedByBadUser.put( key, freqAfterDownloadedByBadUser.get( key ).doubleValue() );
+        }
         this.goodFileIds = goodFileIds;
 
         draw();

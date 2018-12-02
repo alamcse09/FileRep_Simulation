@@ -2,10 +2,12 @@ package sim.Engine;
 
 import org.apache.commons.math3.distribution.ParetoDistribution;
 import org.apache.commons.math3.util.Pair;
+import sim.Config;
 import sim.Constants;
 import sim.RandomNumberGenerator.WeightedRandomGenerator;
 import sim.util.Util;
 
+import javax.swing.*;
 import java.util.*;
 
 public class SimulationEngine {
@@ -25,7 +27,7 @@ public class SimulationEngine {
         Map<Integer,Double> freq = new HashMap<>();
 
         for( Integer id: fileId )
-            freq.put( id, 0.5 );
+            freq.put( id, 0.0 );
 
         return freq;
     }
@@ -74,9 +76,30 @@ public class SimulationEngine {
 
     public static Map<Integer,Double> simulateDownloadByGoodUserByScore(Map<Integer, Double> initialScore, ArrayList<Integer> goodFileIds, List<Integer> goodUserId) {
 
-        Map<Integer, Double> userScoreMap = new HashMap<>();
+        Map<Integer, Pair<Double,Integer>> userScoreMap = new HashMap<>();
 
-        
+        for( Integer userId: goodUserId ){
+
+            userScoreMap.put( userId, new Pair<>( 0.5, 0 ) );
+        }
+
+        for( Integer userId: goodUserId ){
+
+            Collections.shuffle( goodFileIds );
+            for( int j = 0, index=0; j<Constants.downloadPerUser && index<goodFileIds.size(); j++, index++ ){
+
+                Integer fileId = goodFileIds.get( index );
+                Double newScore = 0.1*initialScore.get( fileId ) + ( 1 - 0.1 )* userScoreMap.get( userId ).getFirst();
+
+                Double newTotalScore = userScoreMap.get( userId ).getFirst() + newScore;
+                Integer numOfDownload = userScoreMap.get( userId ).getSecond() + 1;
+                userScoreMap.put( userId, new Pair<Double, Integer>( newTotalScore/numOfDownload, numOfDownload ) );
+
+                initialScore.put( fileId, newScore );
+            }
+        }
+
+        return initialScore;
     }
 
     public static Map<Integer,Integer> simulateBadUserDownload( List<Integer> fileId, Map<Integer, Integer> initialFreq) {
@@ -102,9 +125,46 @@ public class SimulationEngine {
         return  freq;
     }
 
+    public static Map<Integer,Double> simulateDownloadByBadUserByScore(Map<Integer, Double> initialScore,
+                                                                       ArrayList<Integer> goodFileIds,
+                                                                       List<Integer> goodUserId,
+                                                                       List<Integer> fileIds) {
+
+        Map<Integer, Pair<Double,Integer>> userScoreMap = new HashMap<>();
+
+        for( int i = 0; i<Constants.numberOfUser; i++ ){
+
+            if( !goodUserId.contains( i ) )
+                userScoreMap.put( i, new Pair<>( 0.0, 0 ) );
+        }
+
+        for( int userId =0; userId<Constants.numberOfUser; userId++ ){
+
+            if( !goodUserId.contains( userId ) ){
+
+                Integer fileId = Util.getRandomNumberInRange( 0, fileIds.size() );
+
+                System.out.println( "Initial score" + initialScore.get( fileId ) );
+
+                if( !(initialScore.get( fileId ) == null) ) {
+                    Double newScore = 0.1 * initialScore.get(fileId);
+                    newScore += (1 - 0.1) * userScoreMap.get(userId).getFirst();
+
+                    Double newTotalScore = userScoreMap.get( userId ).getFirst() + newScore;
+                    Integer numOfDownload = userScoreMap.get( userId ).getSecond() + 1;
+                    userScoreMap.put( userId, new Pair<Double, Integer>( newTotalScore/numOfDownload, numOfDownload ) );
+
+                    initialScore.put( fileId, newScore );
+                }
+            }
+        }
+
+        return initialScore;
+    }
+
     public static Map<Integer,Integer> simulateDownloadByBadUser( List<Integer> fileId, Map<Integer,Integer> initialFreq ){
 
-        Map<Integer,Integer> freqAfterDownloadedByBadUser = new HashMap<>( );
+        Map<Integer,Integer> freqAfterDownloadedByBadUser = new HashMap<>();
 
         List<Pair<Integer,Integer>> fileIdFreqPairList = new ArrayList<>();
 

@@ -26,10 +26,16 @@ public class Main {
 
         Map<Integer,Double> initialScore = SimulationEngine.initializeInitialScore( fileId );
         Map<Integer,Double> freqAfterDownloadedByGoodUserByScore = SimulationEngine.simulateDownloadByGoodUserByScore( initialScore, goodFileIds, goodUserId );
+        Map<Integer,Double> freqAfterDownloadedByBadUserByScore = SimulationEngine.simulateDownloadByBadUserByScore( initialScore, goodFileIds, goodUserId, fileId );
 
         SampleValueHistogram chart = new SampleValueHistogram( "Download frequency", null, initialFreq, freqAfterDownloadedByGoodUser, freqAfterDownloadedByBadUser, goodFileIds );
         chart.pack();
         RefineryUtilities.centerFrameOnScreen(chart);
         chart.setVisible(true);
+
+        SampleValueHistogram chart2 = new SampleValueHistogram( "Download frequency", null, initialScore, freqAfterDownloadedByGoodUserByScore, freqAfterDownloadedByBadUserByScore, goodFileIds, true );
+        chart2.pack();
+        RefineryUtilities.centerFrameOnScreen(chart2);
+        chart2.setVisible(true);
     }
 }
